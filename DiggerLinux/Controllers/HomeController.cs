@@ -12,6 +12,26 @@ namespace DiggerLinux.Controllers
     {
         public IActionResult Index()
         {
+            var process = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    //FileName = "/bin/bash",
+                    //Arguments = $"-c \"{escapedArgs}\"", 					 
+                    FileName = "ping",
+                    Arguments = $"localhost",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                }
+            };
+
+            process.Start();
+            string result = process.StandardOutput.ReadToEnd();
+            Console.WriteLine(result);
+            Console.WriteLine("zzz");
+            process.WaitForExit();
+
             return View();
         }
 
