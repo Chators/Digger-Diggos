@@ -10,7 +10,7 @@ namespace DiggerLinux.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index( [FromBody] SearchViewModel model )
         {
             var process = new Process()
             {
@@ -25,14 +25,14 @@ namespace DiggerLinux.Controllers
                     CreateNoWindow = true,
                 }
             };
-
-            process.Start();
+            /*process.Start();
             string result = process.StandardOutput.ReadToEnd();
             Console.WriteLine(result);
             Console.WriteLine("zzz");
-            process.WaitForExit();
+            process.WaitForExit();*/
 
-            return View();
+            model.Domain = "Gautier";
+            return Ok(model);
         }
 
         public IActionResult About()
