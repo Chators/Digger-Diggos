@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DiggerLinux.Models;
+using DiggerLinux.Tools;
 
 namespace DiggerLinux.Controllers
 {
@@ -12,7 +13,7 @@ namespace DiggerLinux.Controllers
     {
         public IActionResult Index( [FromBody] SearchViewModel model )
         {
-            var process = new Process()
+            /*var process = new Process()
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -24,15 +25,16 @@ namespace DiggerLinux.Controllers
                     UseShellExecute = false,
                     CreateNoWindow = true,
                 }
-            };
+            };*/
+
             /*process.Start();
             string result = process.StandardOutput.ReadToEnd();
             Console.WriteLine(result);
             Console.WriteLine("zzz");
             process.WaitForExit();*/
-
+            string l = ShellSystem.ExecCommand("ls", "-l");
             model.Domain = "Gautier";
-            return Ok(model);
+            return Ok(l);
         }
 
         public IActionResult About()
