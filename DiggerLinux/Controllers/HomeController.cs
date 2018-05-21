@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DiggerLinux.Models;
-using DiggerLinux.Tools;
+using DiggerLinux.Helpers;
 
 namespace DiggerLinux.Controllers
 {
@@ -32,7 +32,7 @@ namespace DiggerLinux.Controllers
             Console.WriteLine(result);
             Console.WriteLine("zzz");
             process.WaitForExit();*/
-            string l = ShellSystem.ExecCommand("ls", "-l");
+            ShellHelper.Bash("ls -l");
             model.Domain = "Gautier";
             return Ok(l);
         }
