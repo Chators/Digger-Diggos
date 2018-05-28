@@ -17,23 +17,11 @@ namespace DiggerLinux.Controllers
             return Ok(result);
         }
 
-        public IActionResult About()
+        [HttpPost("SearchSoftware")]
+        public IActionResult SearchSoftware([FromBody] SearchViewModel model )
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string result = ShellHelper.Bash("execDatasploit.sh " + model.Domain);
+            return Ok(result);
         }
     }
 }
