@@ -11,12 +11,12 @@ namespace DiggerLinux.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index( [FromBody] SearchViewModel model )
+        /*public IActionResult Index( [FromBody] SearchViewModel model )
         {
             string result = ShellHelper.Bash("execDatasploit.sh " + model.Domain);
             return Ok(result);
-        }
-
+        }*/
+    
         [HttpPost("SearchSoftware")]
         public IActionResult SearchSoftware([FromBody] SearchViewModel model )
         {
