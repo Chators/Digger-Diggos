@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace DiggerLinux.Helpers
 {
-    public static class ShellHelper
+    public class ShellHelper
     {
-        public static string Bash(this string cmd)
+        public string Bash(string cmd)
         {
             var escapedArgs = cmd.Replace("\"", "\\\"");
 
@@ -23,9 +20,11 @@ namespace DiggerLinux.Helpers
                     CreateNoWindow = true,
                 }
             };
+
             process.Start();
             string result = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
+
             return result;
         }
     }

@@ -1,1 +1,1 @@
-digger-serverOnLinux
+Diggos
